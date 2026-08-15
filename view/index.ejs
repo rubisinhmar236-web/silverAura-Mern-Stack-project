@@ -8,8 +8,10 @@
 <body>
     <h3>All product</h3>
     <ul>
+        <br><br>
         <% for(let list of listings){ %>
-        <h3><%= list.name %></h3>
+        <a href="/listings/<%= list._id %>">
+                <%= list.name %><br><br>
         <% }%>
 </ul>
 </body>

@@ -8,6 +8,8 @@ const port = 8080;
 const path = require("path");
 const listings = require("./listing");
 
+app.use = (express.urlencoded({extended:true}));
+
 main()
 .catch(err => console.log(err));
 
@@ -22,10 +24,16 @@ app.get("/", (req, res)=>{
      res.send("Working");
  });
 
-app.get("/post", async(req, res)=>{
+app.get("/listings", async(req, res)=>{
     const listings = await Listing.find({});
      res.render("index.ejs",{listings});
  });
+
+app.get("/listings/:id", async(req, res)=>{
+    let {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/show.ejs", {listing});
+});
 
 
 
