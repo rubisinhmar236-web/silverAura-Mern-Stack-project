@@ -2,13 +2,15 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./listing.js");
+const methodOverride = require("method-override");
 
 
 const port = 8080;
 const path = require("path");
 const listings = require("./listing");
 
-app.use = (express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 main()
 .catch(err => console.log(err));
@@ -29,13 +31,25 @@ app.get("/listings", async(req, res)=>{
      res.render("index.ejs",{listings});
  });
 
+ //show route
 app.get("/listings/:id", async(req, res)=>{
     let {id} = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/show.ejs", {listing});
 });
 
+//edit route
+app.get("/listings/:id/edit", async(req, res)=>{
+    let {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/edit.ejs", {listing});
+});
 
+app.put("/listings/:id", async(req, res)=>{
+    let {id} = req.params;
+    await Listing.findByIdAndUpdate(id, {...req.body.listing});
+    res.redirect(`/listings/${id}`);
+});
 
 // app.get("/postlisting", async (req, res)=>{
 //     let sampleListing = new Listing({
