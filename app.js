@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./listing.js");
 const methodOverride = require("method-override");
-
+const ejsMate = require("ejs-mate");
 
 const port = 8080;
 const path = require("path");
@@ -11,7 +11,7 @@ const listings = require("./listing");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
+app.engine("ejs", ejsMate);
 main()
 .catch(err => console.log(err));
 
