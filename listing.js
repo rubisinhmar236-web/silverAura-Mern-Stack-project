@@ -9,6 +9,7 @@ const listingSchema = new Schema({
     price: {
         type: Number,
         required: 100,
+        min: 100,
     },
     image: {
         type: String,
