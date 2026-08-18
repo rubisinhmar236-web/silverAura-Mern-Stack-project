@@ -4,9 +4,12 @@
     <form method="GET" action="/listings/new"><button>Add new product</button></form>
     <ul>
         <br><br>
-        <% for(let list of listings){ %>
-        <a href="/listings/<%= list._id %>">
+        <ul>
+                <% for(let list of listings){ %>
+                <a href="/listings/<%= list._id %>">
                 <%= list.name %><br><br>
         <% }%>
+        </ul>
+        
 </ul>
 

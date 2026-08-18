@@ -1,0 +1,34 @@
+/* Navbar */
+
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.navbar-brand {
+    color: #D4AF37 !important;
+    font-size: 2.5rem;
+    margin-right: 2rem;
+}
+
+.navbar-brand i {
+    color: #D4AF37 !important;
+}
+
+.nav-link {
+    color: #222222 !important;
+    margin-right: 1.5rem;
+}
+
+.nav-link:hover {
+    color: #D4AF37 !important;
+}
+
+.d-flex {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.nav-link i {
+    margin-right: 0.3rem;
+}
